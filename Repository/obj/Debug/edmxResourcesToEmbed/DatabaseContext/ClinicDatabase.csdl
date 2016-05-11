@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OnlineClinicModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="OnlineClinicEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Appointments" EntityType="OnlineClinicModel.Appointment" />
+    <EntitySet Name="Medicines" EntityType="OnlineClinicModel.Medicine" />
+    <EntitySet Name="Patients" EntityType="OnlineClinicModel.Patient" />
+    <EntitySet Name="Roles" EntityType="OnlineClinicModel.Role" />
+    <EntitySet Name="Treatments" EntityType="OnlineClinicModel.Treatment" />
+    <EntitySet Name="Users" EntityType="OnlineClinicModel.User" />
+    <AssociationSet Name="FK__Appointme__Patie__1A14E395" Association="OnlineClinicModel.FK__Appointme__Patie__1A14E395">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="Appointment" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Appointme__UserI__1B0907CE" Association="OnlineClinicModel.FK__Appointme__UserI__1B0907CE">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Appointment" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Treatment__Medic__22AA2996" Association="OnlineClinicModel.FK__Treatment__Medic__22AA2996">
+      <End Role="Medicine" EntitySet="Medicines" />
+      <End Role="Treatment" EntitySet="Treatments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Treatment__Patie__21B6055D" Association="OnlineClinicModel.FK__Treatment__Patie__21B6055D">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="Treatment" EntitySet="Treatments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User__RoleId__1273C1CD" Association="OnlineClinicModel.FK__User__RoleId__1273C1CD">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Appointment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientId" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Patient" Relationship="OnlineClinicModel.FK__Appointme__Patie__1A14E395" FromRole="Appointment" ToRole="Patient" />
+    <NavigationProperty Name="User" Relationship="OnlineClinicModel.FK__Appointme__UserI__1B0907CE" FromRole="Appointment" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Medicine">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Treatments" Relationship="OnlineClinicModel.FK__Treatment__Medic__22AA2996" FromRole="Medicine" ToRole="Treatment" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Firstname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Lastname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="Mobile" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Mail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="HasArrived" Type="Boolean" />
+    <NavigationProperty Name="Appointments" Relationship="OnlineClinicModel.FK__Appointme__Patie__1A14E395" FromRole="Patient" ToRole="Appointment" />
+    <NavigationProperty Name="Treatments" Relationship="OnlineClinicModel.FK__Treatment__Patie__21B6055D" FromRole="Patient" ToRole="Treatment" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="OnlineClinicModel.FK__User__RoleId__1273C1CD" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Treatment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PatientId" Type="Int32" />
+    <Property Name="MedicineId" Type="Int32" />
+    <NavigationProperty Name="Medicine" Relationship="OnlineClinicModel.FK__Treatment__Medic__22AA2996" FromRole="Treatment" ToRole="Medicine" />
+    <NavigationProperty Name="Patient" Relationship="OnlineClinicModel.FK__Treatment__Patie__21B6055D" FromRole="Treatment" ToRole="Patient" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Firstname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Lastname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Mobile" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Mail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="RoleId" Type="Int32" />
+    <NavigationProperty Name="Appointments" Relationship="OnlineClinicModel.FK__Appointme__UserI__1B0907CE" FromRole="User" ToRole="Appointment" />
+    <NavigationProperty Name="Role" Relationship="OnlineClinicModel.FK__User__RoleId__1273C1CD" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <Association Name="FK__Appointme__Patie__1A14E395">
+    <End Type="OnlineClinicModel.Patient" Role="Patient" Multiplicity="0..1" />
+    <End Type="OnlineClinicModel.Appointment" Role="Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Appointme__UserI__1B0907CE">
+    <End Type="OnlineClinicModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="OnlineClinicModel.Appointment" Role="Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Treatment__Medic__22AA2996">
+    <End Type="OnlineClinicModel.Medicine" Role="Medicine" Multiplicity="0..1" />
+    <End Type="OnlineClinicModel.Treatment" Role="Treatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medicine">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Treatment">
+        <PropertyRef Name="MedicineId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Treatment__Patie__21B6055D">
+    <End Type="OnlineClinicModel.Patient" Role="Patient" Multiplicity="0..1" />
+    <End Type="OnlineClinicModel.Treatment" Role="Treatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Treatment">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User__RoleId__1273C1CD">
+    <End Type="OnlineClinicModel.Role" Role="Role" Multiplicity="0..1" />
+    <End Type="OnlineClinicModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

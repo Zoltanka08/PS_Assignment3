@@ -1,0 +1,9 @@
+C:\Users\Zoli\documents\visual studio 2013\Projects\OnlineClinic\Services\bin\Debug\Services.dll
+C:\Users\Zoli\documents\visual studio 2013\Projects\OnlineClinic\Services\bin\Debug\Services.pdb
+C:\Users\Zoli\documents\visual studio 2013\Projects\OnlineClinic\Services\bin\Debug\Repository.dll
+C:\Users\Zoli\documents\visual studio 2013\Projects\OnlineClinic\Services\bin\Debug\EntityFramework.dll
+C:\Users\Zoli\documents\visual studio 2013\Projects\OnlineClinic\Services\bin\Debug\Repository.pdb
+C:\Users\Zoli\documents\visual studio 2013\Projects\OnlineClinic\Services\bin\Debug\EntityFramework.xml
+C:\Users\Zoli\documents\visual studio 2013\Projects\OnlineClinic\Services\obj\Debug\Services.csprojResolveAssemblyReference.cache
+C:\Users\Zoli\documents\visual studio 2013\Projects\OnlineClinic\Services\obj\Debug\Services.dll
+C:\Users\Zoli\documents\visual studio 2013\Projects\OnlineClinic\Services\obj\Debug\Services.pdb

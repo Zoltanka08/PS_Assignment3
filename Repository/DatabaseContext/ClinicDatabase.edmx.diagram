@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="31f3cdb228c0436da7108266cdd87ae2" Name="Diagram1">
+        <EntityTypeShape EntityType="OnlineClinicModel.Appointment" Width="1.5" PointX="5" PointY="1.875" />
+        <EntityTypeShape EntityType="OnlineClinicModel.Medicine" Width="1.5" PointX="3.125" PointY="5.125" />
+        <EntityTypeShape EntityType="OnlineClinicModel.Patient" Width="1.5" PointX="7.25" PointY="2.25" />
+        <EntityTypeShape EntityType="OnlineClinicModel.Role" Width="1.5" PointX="0.5" PointY="2.25" />
+        <EntityTypeShape EntityType="OnlineClinicModel.Treatment" Width="1.5" PointX="5.25" PointY="4.875" />
+        <EntityTypeShape EntityType="OnlineClinicModel.User" Width="1.5" PointX="2.75" PointY="1.625" />
+        <AssociationConnector Association="OnlineClinicModel.FK__Appointme__Patie__1A14E395" />
+        <AssociationConnector Association="OnlineClinicModel.FK__Appointme__UserI__1B0907CE" />
+        <AssociationConnector Association="OnlineClinicModel.FK__Treatment__Medic__22AA2996" />
+        <AssociationConnector Association="OnlineClinicModel.FK__Treatment__Patie__21B6055D" />
+        <AssociationConnector Association="OnlineClinicModel.FK__User__RoleId__1273C1CD" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
