@@ -28,6 +28,8 @@ namespace ElectroShopMobile.CustomAttributes
 
         public override void OnAuthorization(HttpActionContext actionContext)
         {
+            return;
+
             var userService = GetUserService();
 
             if (CheckIfIdentityIsSet())

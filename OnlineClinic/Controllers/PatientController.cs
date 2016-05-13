@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Web.Http;
 
 namespace OnlineClinic.Controllers
@@ -29,13 +30,15 @@ namespace OnlineClinic.Controllers
             this.appointmentService = appointmentService;
         }
 
-        [HttpPost]
-        public IEnumerable<string> NotifyDoctors(PatientModel model)
+        [HttpGet]
+        public string NotifyDoctors(int id)
         {
+            Patient model = patientService.GetById(id);
             IEnumerable<User> doctors = GetDoctorsByPatientId(model.Id);
             PatientSubject patient = new PatientSubject(model.Firstname, model.Lastname);
             IList<Doctor> observerDoctors = new List<Doctor>();
             IList<string> messages = new List<string>();
+            StringBuilder notify = new StringBuilder();
 
             foreach(User doctor in doctors)
             {
@@ -45,14 +48,15 @@ namespace OnlineClinic.Controllers
             }
 
             if(model.HasArrived != null)
-                patient.HasArrived = (bool)model.HasArrived;
+                patient.HasArrived = !patient.HasArrived;
 
             foreach(Doctor doctor in observerDoctors)
             {
                 messages.Add(doctor.NotificationMessage);
+                notify.AppendLine(doctor.NotificationMessage);
             }
 
-            return messages;
+            return notify.ToString();
         }
 
         public IEnumerable<PatientModel> GetAll()
