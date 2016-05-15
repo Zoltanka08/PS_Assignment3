@@ -5,6 +5,6 @@ C:\Users\Zoli\documents\visual studio 2013\Projects\OnlineClinic\Repository\bin\
 C:\Users\Zoli\documents\visual studio 2013\Projects\OnlineClinic\Repository\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Zoli\documents\visual studio 2013\Projects\OnlineClinic\Repository\bin\Debug\EntityFramework.xml
 C:\Users\Zoli\documents\visual studio 2013\Projects\OnlineClinic\Repository\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Zoli\documents\visual studio 2013\Projects\OnlineClinic\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
 C:\Users\Zoli\documents\visual studio 2013\Projects\OnlineClinic\Repository\obj\Debug\Repository.dll
 C:\Users\Zoli\documents\visual studio 2013\Projects\OnlineClinic\Repository\obj\Debug\Repository.pdb
+C:\Users\Zoli\documents\visual studio 2013\Projects\OnlineClinic\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
